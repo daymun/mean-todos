@@ -5,4 +5,9 @@ html
     link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    //- script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js')
+    .container
+      .row
+        .col-md-6
+          .todolist.not-done
+              block content
