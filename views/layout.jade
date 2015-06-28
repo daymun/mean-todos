@@ -5,9 +5,14 @@ html
     link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    //- script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js')
     .container
       .row
         .col-md-6
           .todolist.not-done
               block content
+    script(type='text/javascript', src='/bower_components/jquery/dist/jquery.js')
+    script(type='text/javascript', src='//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js')
+    //- TODO: Replace jquery-ui with html5sortable
+    //- script(type='text/javascript', src='/bower_components/html5sortable/jquery.sortable.js')
+    script(type='text/javascript', src='/bower_components/bootstrap/dist/js/bootstrap.js')
+    script(type='text/javascript', src='/javascripts/todos.js')
