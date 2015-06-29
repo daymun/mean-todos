@@ -45,8 +45,11 @@ function countTodos(){
 //create task
 function createTodo(text){
     var markup = '<li class="ui-state-default"><div class="checkbox"><label><input type="checkbox" value="" />'+ text +'</label></div></li>';
-    $('#sortable').append(markup);
-    $('.add-todo').val('');
+    var params = { title: text };
+    $.post('/api/items', params).done(function(data) {
+      $('#sortable').append(markup);
+      $('.add-todo').val('');
+    });
 }
 
 //mark task as done
