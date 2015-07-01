@@ -9,21 +9,11 @@ block content
         button#checkAll.btn.btn-success Mark all as done
         hr
         ul#sortable.list-unstyled
-          li.ui-state-default
+          li.ui-state-default(ng-repeat="item in items")
             .checkbox
               label
                 input(type='checkbox', value='')
-                | Take out the trash
-          li.ui-state-default
-            .checkbox
-              label
-                input(type='checkbox', value='')
-                | Buy bread
-          li.ui-state-default
-            .checkbox
-              label
-                input(type='checkbox', value='')
-                | Teach penguins to fly
+                | {{ item.title }}
         .todo-footer
           strong
             span.count-todos
