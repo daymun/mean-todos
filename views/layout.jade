@@ -1,10 +1,10 @@
 doctype html
-html
+html(lang='en', ng-app='meanTodos')
   head
     title= title
     link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+  body(ng-controller='mainController')
     .container
       block content
     script(type='text/javascript', src='/bower_components/jquery/dist/jquery.js')
@@ -13,4 +13,5 @@ html
     //- script(type='text/javascript', src='/bower_components/html5sortable/jquery.sortable.js')
     script(type='text/javascript', src='/bower_components/bootstrap/dist/js/bootstrap.js')
     script(type='text/javascript', src='/bower_components/angular/angular.js')
+    //- script(type='text/javascript', src='/javascripts/todos-jquery.js')
     script(type='text/javascript', src='/javascripts/todos.js')
