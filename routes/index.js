@@ -1,8 +1,8 @@
 var express = require('express'),
     router  = express.Router();
 
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('*', function (request, response, next) {
+  response.render('index', { title: 'MEAN ToDos' });
 });
 
 module.exports = router;
