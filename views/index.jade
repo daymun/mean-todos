@@ -5,7 +5,10 @@ block content
     .col-md-6
       .todolist.not-done
         h1 Todos
-        input.form-control.add-todo(type='text', placeholder='Add todo')
+        form(ng-submit='createItem()')
+          input.form-control.add-todo(type='text',
+                                      placeholder='Add todo',
+                                      ng-model='formData.title')
         button#checkAll.btn.btn-success Mark all as done
         hr
         ul#sortable.list-unstyled

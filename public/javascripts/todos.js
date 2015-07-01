@@ -13,4 +13,17 @@ angular.module('meanTodos', [])
               .error(function (data) {
                 console.log('Error: ' + data);
               });
+
+         $scope.createItem = function () {
+           console.log($scope.formData)
+           $http.post('/api/items', $scope.formData)
+                .success(function (data) {
+                  $scope.formData = {};
+                  $scope.todos = data;
+                  console.log(data);
+                })
+                .error(function (data) {
+                  console.log('Error: ' + data);
+                });
+         };
        });
