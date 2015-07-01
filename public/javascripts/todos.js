@@ -19,7 +19,7 @@ angular.module('meanTodos', [])
            $http.post('/api/items', $scope.formData)
                 .success(function (data) {
                   $scope.formData = {};
-                  $scope.todos = data;
+                  $scope.items.push(data);
                   console.log(data);
                 })
                 .error(function (data) {
