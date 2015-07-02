@@ -6,9 +6,15 @@ meanTodos.controller('mainController', function ($scope, $http) {
   // make todo items available to the view
   $http.get('/api/items')
     .success(function (data) {
-      $scope.items = data;
+      $scope.items = data.filter(function(item) {
+        return !item.complete;
+      });
+
+      $scope.completeItems = data.filter(function(item) {
+        return item.complete;
+      });
+
       $scope.countItems();
-      console.log(data);
     })
     .error(function (data) {
       console.log('Error: ' + data);

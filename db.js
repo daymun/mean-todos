@@ -5,6 +5,7 @@ mongoose.connect('mongodb://localhost/mean-todos');
 
 var ItemSchema = new Schema({
   title      : { type: String, required: true, trim: true },
+  complete   : { type: Boolean, default: false },
   created_at : { type: Date },
   updated_at : { type: Date }
 });

@@ -12,7 +12,7 @@ block content
         button#checkAll.btn.btn-success Mark all as done
         hr
         ul#sortable.list-unstyled
-          li.ui-state-default(ng-repeat="item in items")
+          li.ui-state-default(ng-repeat='item in items')
             .checkbox
               label
                 input(type='checkbox', value='', ng-model='item.complete', ng-change='itemChecked()')
@@ -25,7 +25,7 @@ block content
       .todolist
         h1 Already Done
         ul#done-items.list-unstyled
-          li
-            | Some item
+          li(ng-repeat='item in completeItems')
+            | {{ item.title }}
             button.remove-item.btn.btn-default.btn-xs.pull-right
               span.glyphicon.glyphicon-remove
