@@ -1,24 +1,24 @@
 var meanTodos = angular.module('meanTodos', []);
 
 meanTodos.controller('mainController', function ($scope, $http) {
-  $scope.formData = {};
+  $scope.resetItems = function () {
+    // make todo items available to the view
+    $http.get('/api/items')
+      .success(function (data) {
+        $scope.items = data.filter(function(item) {
+          return !item.complete;
+        });
 
-  // make todo items available to the view
-  $http.get('/api/items')
-    .success(function (data) {
-      $scope.items = data.filter(function(item) {
-        return !item.complete;
+        $scope.completeItems = data.filter(function(item) {
+          return item.complete;
+        });
+
+        $scope.countItems();
+      })
+      .error(function (data) {
+        console.log('Error: ' + data);
       });
-
-      $scope.completeItems = data.filter(function(item) {
-        return item.complete;
-      });
-
-      $scope.countItems();
-    })
-    .error(function (data) {
-      console.log('Error: ' + data);
-    });
+  };
 
   $scope.countItems = function () {
     var incompleteItems = $scope.items.filter(function(item) {
@@ -44,7 +44,7 @@ meanTodos.controller('mainController', function ($scope, $http) {
   $scope.deleteItem = function () {
     $http.delete('/api/items/' + this.item._id)
       .success(function (data) {
-        console.log(data);
+        $scope.resetItems();
       })
       .error(function (data) {
         console.log('Error: ' + data);
@@ -56,9 +56,12 @@ meanTodos.controller('mainController', function ($scope, $http) {
     $http.put('/api/items/' + this.item._id, params)
       .success(function (data) {
         console.log(data);
+        $scope.resetItems();
       })
       .error(function (data) {
         console.log('Error: ' + data);
       });
   };
+
+  $scope.resetItems();
 });
