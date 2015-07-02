@@ -15,7 +15,7 @@ block content
           li.ui-state-default(ng-repeat="item in items")
             .checkbox
               label
-                input(type='checkbox', value='')
+                input(type='checkbox', value='', ng-model='item.complete', ng-change='itemChecked()')
                 | {{ item.title }}
         .todo-footer
           strong
