@@ -25,6 +25,18 @@ router.post('/items', function (request, response) {
   });
 });
 
+// items#update
+router.put('/items/:id', function (request, response) {
+  var params = { complete: request.body.complete };
+  Item.findByIdAndUpdate(request.params.id,
+                        params,
+                        { new: true },
+                        function (error, item) {
+                          if (error) return response.status(404).send(error);
+                          response.status(200).json(item);
+                        });
+});
+
 // items#destroy
 router.delete('/items/:id', function (request, response) {
   Item.findByIdAndRemove(request.params.id, function (error, item) {
