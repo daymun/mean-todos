@@ -42,14 +42,13 @@ meanTodos.controller('mainController', function ($scope, $http) {
   };
 
   $scope.itemChecked = function () {
-    if (this.item.complete) {
-      $itemLi = $(event.currentTarget.closest('li'));
-      $itemLi.addClass('remove');
-      var itemTitle = $itemLi.text();
-      var markup = '<li>'+ itemTitle +'<button class="btn btn-default btn-xs pull-right  remove-item"><span class="glyphicon glyphicon-remove"></span></button></li>';
-      $('#done-items').append(markup);
-      $('.remove').remove();
-      $scope.countItems();
-    }
+    var params = { complete: this.item.complete };
+    $http.put('/api/items/' + this.item._id, params)
+      .success(function (data) {
+        console.log(data);
+      })
+      .error(function (data) {
+        console.log('Error: ' + data);
+      });
   };
 });
