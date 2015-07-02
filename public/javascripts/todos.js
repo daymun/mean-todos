@@ -41,6 +41,16 @@ meanTodos.controller('mainController', function ($scope, $http) {
       });
   };
 
+  $scope.deleteItem = function () {
+    $http.delete('/api/items/' + this.item._id)
+      .success(function (data) {
+        console.log(data);
+      })
+      .error(function (data) {
+        console.log('Error: ' + data);
+      });
+  };
+
   $scope.itemChecked = function () {
     var params = { complete: this.item.complete };
     $http.put('/api/items/' + this.item._id, params)

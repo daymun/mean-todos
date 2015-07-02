@@ -27,5 +27,5 @@ block content
         ul#done-items.list-unstyled
           li(ng-repeat='item in completeItems')
             | {{ item.title }}
-            button.remove-item.btn.btn-default.btn-xs.pull-right
+            button.remove-item.btn.btn-default.btn-xs.pull-right(ng-click='deleteItem()')
               span.glyphicon.glyphicon-remove
